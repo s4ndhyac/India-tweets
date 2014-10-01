@@ -1,0 +1,237 @@
+* {
+	box-sizing: border-box;
+}
+html, input {
+    font-family: "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+html {
+    -ms-text-size-adjust: none;
+}
+body {
+    margin: 1.5em;
+    background: #272727;
+    color: #ecf0f0;
+}
+header {
+	margin: 0 100px 4em 0;
+}
+h1, h2, h3 {
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	font-weight: normal;
+}
+h1 {
+	font-size: 3.375em;
+	text-transform: lowercase;
+	background: url(../images/twitter-logo.png) no-repeat 0px 12px;
+	text-indent: 64px;
+}
+h2 {
+	font-size: 1em;
+	text-transform: uppercase;
+}
+a {
+	color: #5ea9dd;
+}
+p, footer {
+	margin: 1em 0 .5em;
+	color: silver;
+}
+footer {
+	font-size: .8em;
+	margin-top: 2em;
+	padding: 1em;
+	text-align: right;
+}
+footer .logo {
+	display: inline-block;
+}
+
+/* topology */
+
+.states {
+	stroke: #fff;
+	stroke-width: 1px;
+	stroke-linejoin: round;
+
+	-webkit-transition: fill 1s;
+    transition: fill 1s;
+}
+
+/* Tweet */
+
+#main {
+	position: relative;
+	width: 1100px;
+	margin: 0 auto;
+}
+.map {
+	margin-left: -80px;
+}
+.tweet {
+	position: absolute;
+	width: 290px;
+	min-height: 180px;
+	padding: 16px;
+	background: #fff;
+	border-radius: 10px;
+	top: 30px;
+	right: 0px;
+	color: #333;
+	opacity: 0;
+}
+.tweet::after {
+  	content: "";
+  	position: absolute;
+  	bottom: -26px;
+  	left: 130px;
+  	border: 0;
+  	border-left-width: 35px;
+  	border-bottom-width: 26px;
+  	border-style: solid;
+  	border-color: transparent #fff;
+  	display: block;
+  	width: 0;
+}
+.tweet blockquote {
+	margin: 0;
+	border: 0;
+}
+.tweet div {
+	display: inline-block;
+}
+.tweet .avatar {
+	width: 48px;
+	height: 48px;
+	float: left;
+	background: url(../images/avatar.png) center center no-repeat;
+}
+.tweet .username {
+	font-weight: bold;
+	line-height: 48px;
+	margin: 0 5px;
+}
+.tweet .text {
+	margin-top: 10px;
+	clear: both;
+}
+.emotion {
+  	position: absolute;
+  	bottom: -60px;
+  	left: 50px;
+  	border: 0;
+  	width: 72px;
+  	height: 72px;
+  	background: url() center center no-repeat;
+}
+
+/* Legend */
+
+ul {
+	padding: 0;
+}
+.legendbox li {
+	list-style-type: none;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.9em;
+	margin-right: 1.5em;
+}
+.legendbox li div {
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	margin-right: 5px;
+	border-radius: 50%;
+	background-color: #FF8586;
+}
+.legendbox li div.sad {
+	background-color: #63A69F;
+}
+
+/* Other UI Components */
+
+input[type=button] {
+	margin-top: 1em;
+	background: #5b5858;
+	border: 0 none;
+  	border-radius: 3px;
+  	color: #fff;
+  	cursor: pointer;
+  	font-size: 1em;
+  	line-height: 1.4em;
+  	padding: 0.3em 1.4em;
+}
+.control {
+	width: 200px;
+  	position: absolute;
+  	right: 20px;
+  	top: 400px;
+}
+
+/* Media-queries */
+
+svg {
+	transform-origin: left top;
+}
+@media only screen and (max-width: 1140px) {
+	h1 {
+		font-size: 3em;
+	}
+	#main {
+		width: 880px;
+	}
+	svg {
+		transform: scale(0.8);
+	}
+	.tweet {
+		width: 250px;
+	}
+}	
+@media only screen and (max-width: 900px) {
+	h1 {
+		font-size: 2.4em;
+		background-size: 32px 26px;
+		text-indent: 44px;
+	}
+	#main {
+		width: 800px;
+	}
+	svg {
+		transform: scale(0.7);
+	}
+	.tweet {
+		width: 230px;
+	}
+}	
+@media only screen and (max-width: 800px) {
+	h1 {
+		font-size: 2em;
+	}
+	#main {
+		width: 100%;
+	}
+	svg {
+		transform: scale(0.75);
+	}
+	.map {
+		margin-left: -40px;
+	}
+	.tweet {
+		position: relative;
+		width: 100%;
+		background: none;
+		border-radius: 0;
+		top: 0;
+		right: 0;
+		color: #fff;
+	}
+	.tweet::after, .emotion {
+	  	display: none !important;
+	}
+}
+@media only screen and (max-width: 600px) {
+	svg {
+		transform: scale(0.5);
+	}
+}
