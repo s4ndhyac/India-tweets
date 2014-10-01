@@ -110,6 +110,7 @@ footer .logo {
 	font-weight: bold;
 	line-height: 48px;
 	margin: 0 5px;
+	padding-left: 10px;
 }
 .tweet .text {
 	margin-top: 10px;

@@ -9,7 +9,7 @@ A showcase and a quick tutorial of [PubNub][pubnub] Twitter feed and data stream
 [Try it now!][demo]
 
  
-![Screencast](https://raw.githubusercontent.com/pubnub/tweet-emotion/gh-pages/happy-tweet.png "Screencast")
+![Screencast](https://raw.githubusercontent.com/pubnub/tweet-emotion/gh-pages/tweet-emotion.gif "Screencast")
 
 
 [d3]: http://d3js.org/
