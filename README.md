@@ -9,10 +9,10 @@ A showcase and a quick tutorial of [PubNub][pubnub] Twitter feed and data stream
 [Try it now!][demo]
 
  
-![Screencast](http://pubnub.com/blog/wp-content/uploads/2014/09/d3-wordcloud.png "Screencast")
+![Screencast](https://raw.githubusercontent.com/pubnub/tweet-emotion/gh-pages/happy-tweet.png "Screencast")
 
 
 [d3]: http://d3js.org/
-[demo]: http://pubnub.github.io/d3-wordcloud
+[demo]: http://pubnub.github.io/tweet-emotion
 [pubnub]: http://www.pubnub.com/docs/javascript/javascript-sdk.html
 
