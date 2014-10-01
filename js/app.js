@@ -124,7 +124,14 @@
 
 	var faceIcon = svg.selectAll('image').data([0]);
 		
-	
+	/* Popup */
+
+	function popup(url) {
+		var pop = window.open(url,'name','height=420,width=550');
+		//if (window.focus) {pop.focus()}
+		return false;
+	}
+
 	/* PubNub */
 
 	var channel = 'pubnub-twitter';
@@ -172,9 +179,19 @@
 		userInfo.city = city;
 		userInfo.state = city.substring(city.lastIndexOf(',')+1).trim();
 
-		userInfo.username = data.user.name;
+		userInfo.name = data.user.name;
+		userInfo.screenname = data.user.screen_name;
 		userInfo.avatar = data.user.profile_image_url;
 		userInfo.tweet = data.text;
+		userInfo.id_str = data.id_str;
+
+		var date = new Date(parseInt(data.timestamp_ms));
+		var d = date.toDateString().substr(4);
+		var t = date.toTimeString();
+		t = t.substr(0, t.indexOf(':')+3);
+		var c = (date.getHours() < 12) ? 'AM' : 'PM';
+
+		userInfo.timestamp = t + ' ' + c + ' - ' + d;
 	
 		console.log(userInfo.tweet);
 		callback(userInfo);
@@ -185,10 +202,17 @@
 		getUserInfo(data, function(user){
 			document.querySelector('.emotion').style.backgroundImage = 'url(images/'+ emotion.icon +')';
 
-			document.querySelector('.avatar').style.backgroundImage = 'url('+ user.avatar +')';
-			document.querySelector('.username').textContent = user.username;
+			document.querySelector('.button').href = 'https://twitter.com/' + user.screenname;
+			document.querySelector('.header').style.backgroundImage = 'url('+ user.avatar +')';
+			document.querySelector('.name').textContent = user.name;
+			document.querySelector('.screenname').textContent = '@' + user.screenname;
 			document.querySelector('.text').innerHTML = user.tweet;
+			document.querySelector('.timestamp').textContent = user.timestamp;
 
+			document.querySelector('.reply').href ='https://twitter.com/intent/tweet?in_reply_to=' + user.id_str;
+			document.querySelector('.retweet').href = 'https://twitter.com/intent/retweet?tweet_id=' + user.id_str;
+			document.querySelector('.favorite').href = 'https://twitter.com/intent/favorite?tweet_id=' + user.id_str;
+			
 			document.querySelector('.tweet').style.opacity = 0.9;
 
 			if(document.querySelector('.'+user.state)) {

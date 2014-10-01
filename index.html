@@ -5,16 +5,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>PubNub x Twitter</title>
-	<meta name="description" content="D3">
+	<meta name="description" content="Twitter Visualizations using PubNub data and D3.js">
 	<meta name="author" content="Tomomi Imura  @girlie_mac">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href='http://fonts.googleapis.com/css?family=Gorditas:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<header>
-		<h1>How is America feeling right now?</h1>
+		<h1><i class="fa fa-twitter"></i> How is America feeling right now?</h1>
 		<p>This map shows how people are emotionally tweeting per state in this very moment. Positive or negative feelings are loosely analyzed by words used in tweets. The real-time data comes from <a href="https://twitter.com/pubnub" target="_blank">@PubNub</a> data stream network, which makes possible for this web page runs without any backend code or data polling.</p>
 	</header>
 
@@ -23,10 +22,21 @@
 		<section id="map" class="map"></section>
 
 		<section class="tweet">
-			<blockquote class="tweetContent">
-				<div class="avatar"></div>
-				<div class="username"></div>
+			<blockquote class="h-entry">
+				<a class="button" role="button" title="Follow on Twitter" href="" target="_blank"><img src="images/twitter-button.png"></a>
+				<div class="header">
+					<div class="name"></div>
+					<div class="screenname"></div>
+				</div>
+				
 				<div class="text"></div>
+				<div class="timestamp"></div>
+
+				<div class="actions">
+					<a class="reply" href="" target="_blank"><i class="fa fa-reply"></i></a>
+					<a class="retweet" href="" target="_blank"><i class="fa fa-retweet"></i></a>
+					<a class="favorite" href="" target="_blank"><i class="fa fa-star"></i></a>
+				</div>
 			</blockquote>
 			<div class="emotion"></div>
 		</section>

@@ -23,15 +23,16 @@ h1, h2, h3 {
 h1 {
 	font-size: 3.375em;
 	text-transform: lowercase;
-	background: url(../images/twitter-logo.png) no-repeat 0px 12px;
-	text-indent: 64px;
 }
 h2 {
 	font-size: 1em;
 	text-transform: uppercase;
 }
-a {
-	color: #5ea9dd;
+a, .fa-twitter {
+	color: #55acee;
+}
+img {
+	border: 0;
 }
 p, footer {
 	margin: 1em 0 .5em;
@@ -71,13 +72,13 @@ footer .logo {
 .tweet {
 	position: absolute;
 	width: 290px;
-	min-height: 180px;
+	min-height: 230px;
 	padding: 16px;
 	background: #fff;
 	border-radius: 10px;
 	top: 30px;
 	right: 0px;
-	color: #333;
+	color: #111;
 	opacity: 0;
 }
 .tweet::after {
@@ -97,24 +98,47 @@ footer .logo {
 	margin: 0;
 	border: 0;
 }
-.tweet div {
-	display: inline-block;
+.tweet .button {
+	position: absolute;
+	top: 14px;
+	right: 14px;
 }
-.tweet .avatar {
-	width: 48px;
-	height: 48px;
-	float: left;
-	background: url(../images/avatar.png) center center no-repeat;
+.tweet .header {
+	min-height: 48px;
+	width: calc(100% - 55px);
+	padding: 3px 0 4px 57px;
+	background: url(../images/avatar.png) left top no-repeat;
 }
-.tweet .username {
+.tweet .name {
 	font-weight: bold;
-	line-height: 48px;
-	margin: 0 5px;
-	padding-left: 10px;
+	font-size: 1rem;
+}
+.tweet .screenname {
+	font-size: 0.875rem;
 }
 .tweet .text {
 	margin-top: 10px;
 	clear: both;
+}
+.tweet .timestamp {
+	font-size: 0.5em;
+	line-height: 1.2em;
+	color: #444;
+	margin-top: 0.75em;
+}
+.tweet .actions {
+	margin-top: 0.5em;
+	padding-top: 0.5em;
+	text-align: right;
+}
+.tweet .actions a {
+	color: #999;
+}
+.tweet .fa {
+	padding-left: .4em;
+}
+.tweet .fa:hover {
+	color: #5ea9dd;
 }
 .emotion {
   	position: absolute;
@@ -170,6 +194,36 @@ input[type=button] {
   	top: 400px;
 }
 
+/* Font Awesome */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.2.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-twitter:before {
+  content: "\f099";
+}
+.fa-retweet:before {
+  content: "\f079";
+}
+.fa-reply:before {
+  content: "\f112";
+}
+.fa-star:before {
+  content: "\f005";
+}
+
 /* Media-queries */
 
 svg {
@@ -192,8 +246,6 @@ svg {
 @media only screen and (max-width: 900px) {
 	h1 {
 		font-size: 2.4em;
-		background-size: 32px 26px;
-		text-indent: 44px;
 	}
 	#main {
 		width: 800px;
@@ -226,6 +278,9 @@ svg {
 		top: 0;
 		right: 0;
 		color: #fff;
+	}
+	.tweet .timestamp {
+		color: silver;
 	}
 	.tweet::after, .emotion {
 	  	display: none !important;
