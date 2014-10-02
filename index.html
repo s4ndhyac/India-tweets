@@ -14,7 +14,7 @@
 <body>
 	<header>
 		<h1><i class="fa fa-twitter"></i> How is America feeling right now?</h1>
-		<p>This map shows how people are emotionally tweeting per state in this very moment. Positive or negative feelings are loosely analyzed by words used in tweets. The real-time data comes from <a href="https://twitter.com/pubnub" target="_blank">@PubNub</a> data stream network, which makes possible for this web page runs without any backend code or data polling.</p>
+		<p>This map shows how people are emotionally tweeting realtime. The colors indicates positive or negative feelings, and they are loosely analyzed by words used in tweets. The data comes from <a href="https://twitter.com/pubnub" target="_blank">@PubNub</a> public data network, which streams actual messages on Twitter at a maximum rate of 50 Tweets per second.</p>
 	</header>
 
 	<section id="main">
@@ -43,8 +43,9 @@
 
 		<section class="legendbox">
 			<ul>
-				<li><div class="happy"></div>More positive tweets than negative</li>
-				<li><div class="sad"></div>More negative tweets than positive</li>
+				<li><div class="happy"></div>More positive tweets</li>
+				<li><div class="neutral"></div>Equal numbers of positive and negative tweets</li>
+				<li><div class="sad"></div>More negative tweets</li>
 			</ul>
 		</section>
 	</section>

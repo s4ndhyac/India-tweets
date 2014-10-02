@@ -173,6 +173,9 @@ ul {
 .legendbox li div.sad {
 	background-color: #63A69F;
 }
+.legendbox li div.neutral {
+	background-color: #DECEB3;
+}
 
 /* Other UI Components */
 
