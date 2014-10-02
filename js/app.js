@@ -123,14 +123,7 @@
 	});
 
 	var faceIcon = svg.selectAll('image').data([0]);
-		
-	/* Popup */
 
-	function popup(url) {
-		var pop = window.open(url,'name','height=420,width=550');
-		//if (window.focus) {pop.focus()}
-		return false;
-	}
 
 	/* PubNub */
 
@@ -140,7 +133,7 @@
 		subscribe_key: 'sub-c-78806dd4-42a6-11e4-aed8-02ee2ddab7fe'
 	});
 
-	// fetching previous 100 data
+	// fetching previous 100 data, then realtime stream
 	function getData() {
 		pubnub.history({
 	    	channel: channel,
