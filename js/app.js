@@ -188,6 +188,10 @@
 		callback(userInfo);
 	}
 
+	function insertLinks(text) {            
+        return text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url){return '<a href="'+url+'" >'+url+'</a>';});                      
+    }
+
 	function displayData(data, emotion) {
 
 		getUserInfo(data, function(user){
@@ -197,7 +201,7 @@
 			document.querySelector('.header').style.backgroundImage = 'url('+ user.avatar +')';
 			document.querySelector('.name').textContent = user.name;
 			document.querySelector('.screenname').textContent = '@' + user.screenname;
-			document.querySelector('.text').innerHTML = user.tweet;
+			document.querySelector('.text').innerHTML = insertLinks(user.tweet);
 			document.querySelector('.timestamp').textContent = user.timestamp;
 
 			document.querySelector('.reply').href ='https://twitter.com/intent/tweet?in_reply_to=' + user.id_str;

@@ -72,7 +72,7 @@ footer .logo {
 .tweet {
 	position: absolute;
 	width: 290px;
-	min-height: 230px;
+	min-height: 240px;
 	padding: 16px;
 	background: #fff;
 	border-radius: 10px;
@@ -121,10 +121,10 @@ footer .logo {
 	clear: both;
 }
 .tweet .timestamp {
-	font-size: 0.5em;
+	font-size: 0.75em;
 	line-height: 1.2em;
 	color: #444;
-	margin-top: 0.75em;
+	margin-top: 1em;
 }
 .tweet .actions {
 	margin-top: 0.5em;
@@ -292,5 +292,8 @@ svg {
 @media only screen and (max-width: 600px) {
 	svg {
 		transform: scale(0.5);
+	}
+	header {
+		margin: 0 0 4em 0;
 	}
 }
