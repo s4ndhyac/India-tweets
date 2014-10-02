@@ -180,11 +180,9 @@
 
 		var date = new Date(parseInt(data.timestamp_ms));
 		var d = date.toDateString().substr(4);
-		var t = date.toTimeString();
-		t = t.substr(0, t.indexOf(':')+3);
-		var c = (date.getHours() < 12) ? 'AM' : 'PM';
+		var t = (date.getHours() > 12) ? date.getHours()-12 + ':' + date.getMinutes() + ' PM' : date.getHours() + ':' + date.getMinutes() +' AM;'
 
-		userInfo.timestamp = t + ' ' + c + ' - ' + d;
+		userInfo.timestamp = t + ' - ' + d;
 	
 		console.log(userInfo.tweet);
 		callback(userInfo);
