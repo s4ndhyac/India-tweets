@@ -230,6 +230,7 @@ input[type=button] {
 /* Media-queries */
 
 svg {
+	-webkit-transform-origin: left top;
 	transform-origin: left top;
 }
 @media only screen and (max-width: 1140px) {
@@ -240,6 +241,7 @@ svg {
 		width: 880px;
 	}
 	svg {
+		-webkit-transform: scale(0.8);
 		transform: scale(0.8);
 	}
 	.tweet {
@@ -254,6 +256,7 @@ svg {
 		width: 800px;
 	}
 	svg {
+		-webkit-transform: scale(0.7);
 		transform: scale(0.7);
 	}
 	.tweet {
@@ -268,6 +271,7 @@ svg {
 		width: 100%;
 	}
 	svg {
+		-webkit-transform: scale(0.75);
 		transform: scale(0.75);
 	}
 	.map {
@@ -291,6 +295,7 @@ svg {
 }
 @media only screen and (max-width: 600px) {
 	svg {
+		-webkit-transform: scale(0.5);
 		transform: scale(0.5);
 	}
 	header {
