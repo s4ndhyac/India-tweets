@@ -32,31 +32,31 @@
 	var positive = {
 		type: 'positive',
 		icon: 'grinning-face.png'
-	}
+	};
 	var happy = {
 		type: 'positive',
 		icon: 'smiling-face.png'
-	}
+	};
 	var lovely = {
 		type: 'positive',
 		icon: 'heart-eyed-happy-face.png'
-	}
+	};
 	var negative = {
 		type: 'negative',
 		icon: 'pensive-face.png'
-	}
+	};
 	var sad = {
 		type: 'negative',
 		icon: 'crying-face.png'
-	}
+	};
 	var angry = {
 		type: 'negative',
 		icon: 'angry-face.png'
-	}
+	};
 	var sick = {
 		type: 'negative',
 		icon: 'sick-face.png'
-	}
+	};
 
 	var positiveWords = [
 		 'excellent', 'amazing', 'beautiful', 'nice', 'marvelous', 'magnificent', 'fabulous', 'astonishing', 'fantastic', 'peaceful', 'fortunate', 
@@ -105,7 +105,7 @@
 
 	var svg = d3.select('#map').append('svg')
 			.attr('width', width)
-			.attr('height', height)
+			.attr('height', height);
 
 	var path = d3.geo.path()
 	    .projection(projection);
@@ -119,7 +119,7 @@
 			.append('path')
 			.attr('class', function(d){ return 'states ' + d.properties.STATE_ABBR;} )
 			.attr('d', path)
-			.attr('fill', function(d, i) { return color(i); })
+			.attr('fill', function(d, i) { return color(i); });
 	});
 
 	var faceIcon = svg.selectAll('image').data([0]);
@@ -155,7 +155,7 @@
 		pubnub.subscribe({
 			channel: channel,
 			callback: processData
-		})
+		});
 	}
 
 	function getUserInfo(data, callback) {
@@ -180,7 +180,7 @@
 
 		var date = new Date(parseInt(data.timestamp_ms));
 		var d = date.toDateString().substr(4);
-		var t = (date.getHours() > 12) ? date.getHours()-12 + ':' + date.getMinutes() + ' PM' : date.getHours() + ':' + date.getMinutes() +' AM;'
+		var t = (date.getHours() > 12) ? date.getHours()-12 + ':' + date.getMinutes() + ' PM' : date.getHours() + ':' + date.getMinutes() +' AM;';
 
 		userInfo.timestamp = t + ' - ' + d;
 	
@@ -224,13 +224,13 @@
 			// Place emotion icons
 
 			var position = projection([user.lon, user.lat]);
-			if(position == null) return;
+			if(position === null) return;
 
 			faceIcon.enter()
 				.append('svg:image')
 				.attr('xlink:href', 'images/'+ emotion.icon)
 				.attr('width', '26').attr('height', '26')
-           		.attr('transform', function(d) {return 'translate(' + position + ')';})
+           		.attr('transform', function(d) {return 'translate(' + position + ')';});
 		});
 	}
 
