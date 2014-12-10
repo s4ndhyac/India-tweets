@@ -239,19 +239,19 @@
 		if(data.place.country_code !== 'US') return;
 		//if(data.lang !== 'en') return;
 
-		if (positiveWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		if (positiveWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, positive);
-		} else if (happyWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (happyWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, happy);
-		} else if (lovelyWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (lovelyWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, lovely);
-		} else if (negativeWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (negativeWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, negative);
-		} else if (sadWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (sadWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, sad);
-		} else if (angryWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (angryWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, angry);
-		} else if (sickWords.some(function(v) { return data.text.toLowerCase().indexOf(v) > 0; })) {
+		} else if (sickWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
 			displayData(data, sick);
 		}
 	}
