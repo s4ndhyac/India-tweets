@@ -1,4 +1,4 @@
-# PubNub ❤ Twitter Project - How is America feeling right now?
+# PubNub x Twitter Project - How is America feeling right now?
 
 
 A showcase and a quick tutorial of [PubNub][pubnub] Twitter feed and data stream network JavaScript API, using [D3.js][d3]. 
