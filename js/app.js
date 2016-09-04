@@ -140,7 +140,7 @@
 
 	d3.json('json/india-states.json', function(error, topology) {
 	    g.selectAll('path')
-			.data(topojson.feature(topology, topology.objects.india-states-edited-2).features)
+			.data(topojson.feature(topology, topology.objects.indiaStates).features)
 			.enter()
 			.append('path')
 			.attr('class', function(d){ return 'states ' + d.properties.NAME_1;} )
