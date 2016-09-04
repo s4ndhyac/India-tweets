@@ -95,35 +95,38 @@
 
 	var width = 900;
 	var height = 540;
+	var scale  = 900;
+      	var offset = [width/2, height/2];
 
 	//var projection = d3.geo.albersUsa();
 		//.scale(900);
 		
-	d3.json("json/india-states.json", function(json) {
+	var center = d3.json("json/india-states.json", function(json) {
       		// create a first guess for the projection
       		var center = d3.geo.centroid(json)
-      		var scale  = 900;
-      		var offset = [width/2, height/2];
-      		projection = d3.geo.mercator().scale(scale).center(center)
+      		return center;
+	});
+      	
+      	var projection = d3.geo.mercator().scale(scale).center(center)
           	.translate(offset);
           	
-          	// create the path
-	      	path = d3.geo.path().projection(projection);
+        // create the path
+	var path = d3.geo.path().projection(projection);
 	
-	      // using the path determine the bounds of the current map and use 
-	      // these to determine better values for the scale and translation
-	      var bounds  = path.bounds(json);
-	      var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
-	      var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
-	      var scale   = (hscale < vscale) ? hscale : vscale;
-	      var offset  = [width - (bounds[0][0] + bounds[1][0])/2,
-	                        height - (bounds[0][1] + bounds[1][1])/2];
+	// using the path determine the bounds of the current map and use 
+      	// these to determine better values for the scale and translation
+      	var bounds  = path.bounds(json);
+      	var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
+      	var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
+      	var scale   = (hscale < vscale) ? hscale : vscale;
+      	var offset  = [width - (bounds[0][0] + bounds[1][0])/2,
+                        height - (bounds[0][1] + bounds[1][1])/2];
+
+      	// new projection
+      	projection = d3.geo.mercator().center(center)
+        	.scale(scale).translate(offset);
+      	path = path.projection(projection);
 	
-	      // new projection
-	      projection = d3.geo.mercator().center(center)
-	        .scale(scale).translate(offset);
-	      path = path.projection(projection);
-	});
 
 	var color = d3.scale.linear()
 		.domain([0, 15])
@@ -134,7 +137,7 @@
 			.attr('height', height);
 
 	//var path = d3.geo.path()
-	//   .projection(projection);
+	   //.projection(projection);
 
 	var g = svg.append('g');
 
