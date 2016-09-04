@@ -95,43 +95,16 @@
 
 	var width = 900;
 	var height = 540;
-	var scale  = 900;
-      	var offset = [width/2, height/2];
 
-	//var projection = d3.geo.albersUsa();
-		//.scale(900);
+	//Define map projection
+        var projection = d3.geo.mercator()
+                .translate([0, 0])
+                .scale(1);
+
+        //Define path generator
+        var path = d3.geo.path()
+                .projection(projection);
 		
-	var center = d3.json("json/india-states.json", function(json) {
-      		// create a first guess for the projection
-      		var center = d3.geo.centroid(json)
-      		return center;
-	});
-      	
-      	var projection = d3.geo.mercator().scale(scale).center(center)
-          	.translate(offset);
-          	
-        // create the path
-	var path = d3.geo.path().projection(projection);
-	
-	// using the path determine the bounds of the current map and use 
-      	// these to determine better values for the scale and translation
-      	var jsonString = d3.json("json/india-states.json", function(json) {
-      		return json;
-	});
-	
-      	var bounds  = path.bounds(jsonString);
-      	var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
-      	var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
-      	var scale   = (hscale < vscale) ? hscale : vscale;
-      	var offset  = [width - (bounds[0][0] + bounds[1][0])/2,
-                        height - (bounds[0][1] + bounds[1][1])/2];
-
-      	// new projection
-      	projection = d3.geo.mercator().center(center)
-        	.scale(scale).translate(offset);
-      	path = path.projection(projection);
-	
-
 	var color = d3.scale.linear()
 		.domain([0, 15])
 		.range(['#5b5858', '#4f4d4d', '#454444', '#323131']);
@@ -140,12 +113,20 @@
 			.attr('width', width)
 			.attr('height', height);
 
-	//var path = d3.geo.path()
-	   //.projection(projection);
-
 	var g = svg.append('g');
 
 	d3.json('json/india-states.json', function(error, topology) {
+		
+		// Calculate bounding box transforms for entire collection
+                var b = path.bounds(topojson.feature(topology, topology.objects.indiaStates)),
+                s = .95 / Math.max((b[1][0] - b[0][0]) / w, (b[1][1] - b[0][1]) / h),
+                t = [(w - s * (b[1][0] + b[0][0])) / 2, (h - s * (b[1][1] + b[0][1])) / 2];
+
+                // Update the projection    
+                projection
+                  .scale(s)
+                  .translate(t);
+		
 	    g.selectAll('path')
 			.data(topojson.feature(topology, topology.objects.indiaStates).features)
 			.enter()
