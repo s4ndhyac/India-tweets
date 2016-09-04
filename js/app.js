@@ -10,11 +10,11 @@
 			pubnub.unsubscribe({
 				channel: channel
 			});
-			button.value = 'Stream again';
+			button.value = 'Stream';
 			isRunning = false;
 		} else {
 			getData();
-			button.value = 'Stop me!';
+			button.value = 'Stop!';
 			isRunning = true;
 		}
 		
@@ -112,12 +112,12 @@
 
 	var g = svg.append('g');
 
-	d3.json('json/us-states.json', function(error, topology) {
+	d3.json('json/india-states.json', function(error, topology) {
 	    g.selectAll('path')
-			.data(topojson.feature(topology, topology.objects.usStates).features)
+			.data(topojson.feature(topology, topology.objects.india-states-edited-2).features)
 			.enter()
 			.append('path')
-			.attr('class', function(d){ return 'states ' + d.properties.STATE_ABBR;} )
+			.attr('class', function(d){ return 'states ' + d.properties.HASC_1;} )
 			.attr('d', path)
 			.attr('fill', function(d, i) { return color(i); });
 	});
@@ -237,7 +237,7 @@
 
 	function processData(data) {
 		if(!data || !data.place || !data.lang) return; 
-		if(data.place.country_code !== 'US') return;
+		if(data.place.country_code !== 'IN') return;
 		//if(data.lang !== 'en') return;
 
 		if (positiveWords.some(function(v) { return data.text.toLowerCase().indexOf(v) !== -1; })) {
