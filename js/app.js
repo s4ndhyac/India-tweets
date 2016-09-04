@@ -119,8 +119,8 @@
 		
 		// Calculate bounding box transforms for entire collection
                 var b = path.bounds(topojson.feature(topology, topology.objects.indiaStates)),
-                s = .95 / Math.max((b[1][0] - b[0][0]) / w, (b[1][1] - b[0][1]) / h),
-                t = [(w - s * (b[1][0] + b[0][0])) / 2, (h - s * (b[1][1] + b[0][1])) / 2];
+                s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+                t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
                 // Update the projection    
                 projection
