@@ -115,7 +115,12 @@
 	
 	// using the path determine the bounds of the current map and use 
       	// these to determine better values for the scale and translation
-      	var bounds  = path.bounds(json);
+      	var bounds = d3.json("json/india-states.json", function(json) {
+      		// create a first guess for the projection
+      		var bounds  = path.bounds(json);
+      		return bounds;
+	});
+      	
       	var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
       	var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
       	var scale   = (hscale < vscale) ? hscale : vscale;
