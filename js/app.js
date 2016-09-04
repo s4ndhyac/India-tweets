@@ -14,7 +14,7 @@
 			isRunning = false;
 		} else {
 			getData();
-			button.value = 'Stop!';
+			button.value = 'Stop';
 			isRunning = true;
 		}
 		
@@ -117,7 +117,7 @@
 			.data(topojson.feature(topology, topology.objects.india-states-edited-2).features)
 			.enter()
 			.append('path')
-			.attr('class', function(d){ return 'states ' + d.properties.HASC_1;} )
+			.attr('class', function(d){ return 'states ' + d.properties.NAME_1;} )
 			.attr('d', path)
 			.attr('fill', function(d, i) { return color(i); });
 	});
