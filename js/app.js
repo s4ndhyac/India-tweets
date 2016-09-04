@@ -104,11 +104,11 @@
       		var center = d3.geo.centroid(json)
       		var scale  = 900;
       		var offset = [width/2, height/2];
-      		var projection = d3.geo.mercator().scale(scale).center(center)
+      		projection = d3.geo.mercator().scale(scale).center(center)
           	.translate(offset);
           	
           	// create the path
-	      var path = d3.geo.path().projection(projection);
+	      	path = d3.geo.path().projection(projection);
 	
 	      // using the path determine the bounds of the current map and use 
 	      // these to determine better values for the scale and translation
