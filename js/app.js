@@ -144,7 +144,7 @@
 	var channel = 'pubnub-twitter';
 
 	var pubnub = PUBNUB.init({
-		subscribe_key: 'sub-c-78806dd4-42a6-11e4-aed8-02ee2ddab7fe',
+		subscribe_key: 'sub-c-bfd40eaa-72a3-11e6-9259-0619f8945a4f',
 		ssl: true
 	});
 
